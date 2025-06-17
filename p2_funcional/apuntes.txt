@@ -6,12 +6,6 @@ Para la entrega, si no se consigue que funcione, entregar hasta donde hayas cons
 
 
 
-Sincronización y Consistencia: Dado que ambas tareas (processGenerator y Scheduler) pueden funcionar de forma concurrente, 
-se recomienda utilizar mecanismos de sincronización (mutex y variables de condición) para asegurar que el acceso a la cola de procesos 
-(u otros recursos compartidos) sea seguro. Esto evitará condiciones de carrera, de modo que el proceso que se agregue en medio de una 
-revisión no cause inconsistencias.
-
-
 Funciones tipo callback:
 https://www.unrepo.com/c/function-pointers-and-callbacks-in-c-tutorial
 
@@ -43,7 +37,6 @@ Esa asignación del proceso creado, puede encargarse el processGenerator o el ba
 
 Al haber un unico timer que llama a my_scheduler tenemos que crear una funcion que se encarge de gestionar todas las colas de procesos.
 Es decir, que llamando una unica vez a my_scheduler se gestionen las numCPU colas a la vez.
-TO-DO: cambiar callbacks
 
 
 

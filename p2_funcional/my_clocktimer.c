@@ -55,8 +55,8 @@ void* my_clock(void *arg)
   printf("SYSTEM: Reloj en marcha.\n");
   //printf("Dentro de my_clock: totalTimers = %d y maquina en: %p\n", params->totalTimers, (void*) params->machine);
 
-  //while(1)
-  while(machine->global_cycles < 100)
+  while(1)
+  //while(machine->global_cycles < 100)
   {
     pthread_mutex_lock(&mutex);
    
@@ -104,8 +104,8 @@ void* my_timer(void *arg)
 
   printf("SYSTEM: Timer en marcha con frecuencia=%d.\n", frequency);
 
-  //while(1)
-  while(!stop_system)
+  while(1)
+  //while(!stop_system)
   {
     pthread_mutex_lock(&mutex);
     
