@@ -29,18 +29,6 @@ https://www.unrepo.com/c/function-pointers-and-callbacks-in-c-tutorial
 
 
 
-SCHEDULER Y POLITICAS
-Se asigna un quantum fijo a todos los procesos de la cola.
-Cuando el proceso cumple ese quantum, se mueve al final de la cola.
-Si el proceso finaliza, se elimina de la cola.
-Los nuevos procesos se añaden al final de la cola.
-
-Cada procesador tiene su cola RR correspondiente.
-Los procesos creados se añaden al procesador con menor carga de trabajo, o sea, el que menos procesos tenga en la cola.
-Esa asignación del proceso creado, puede encargarse el processGenerator o el balanceador de carga (esta es la opcion en un sistema real).
-
-
-
 
 
 
