@@ -1,36 +1,36 @@
 #include "my_clocktimer.h"
 #include "my_processGenerator.h"
 
-struct my_machine create_my_machine(int numCPU, int numCores, int numThreads)
+struct my_machine* create_my_machine(int numCPU, int numCores, int numThreads)
 {
   int i, j, k;
-  struct my_machine machine;
+  struct my_machine* machine = malloc(sizeof(struct my_machine));
   int global_process_id = 0;
   
-  machine.global_cycles = 0;
-  machine.numCPU = numCPU;
-  machine.array_cpu = malloc(numCPU * sizeof(struct my_CPU*));
+  machine->global_cycles = 0;
+  machine->numCPU = numCPU;
+  machine->array_cpu = malloc(numCPU * sizeof(struct my_CPU*));
   for (i = 0; i < numCPU; i++)
   {
-    machine.array_cpu[i] = malloc(sizeof(struct my_CPU));
-    machine.array_cpu[i]->id = i;
-    machine.array_cpu[i]->numCores = numCores;
-    machine.array_cpu[i]->cores = malloc(numCores * sizeof(struct my_core*));
+    machine->array_cpu[i] = malloc(sizeof(struct my_CPU));
+    machine->array_cpu[i]->id = i;
+    machine->array_cpu[i]->numCores = numCores;
+    machine->array_cpu[i]->cores = malloc(numCores * sizeof(struct my_core*));
     
     for (j = 0; j < numCores; j++)
     {
-      machine.array_cpu[i]->cores[j] = malloc(sizeof(struct my_core));
-      machine.array_cpu[i]->cores[j]->id = j;
-      machine.array_cpu[i]->cores[j]->cpu_id = i;
-      machine.array_cpu[i]->cores[j]->numThreads = numThreads;
-      machine.array_cpu[i]->cores[j]->threads = malloc(numThreads * sizeof(struct my_thread*));
+      machine->array_cpu[i]->cores[j] = malloc(sizeof(struct my_core));
+      machine->array_cpu[i]->cores[j]->id = j;
+      machine->array_cpu[i]->cores[j]->cpu_id = i;
+      machine->array_cpu[i]->cores[j]->numThreads = numThreads;
+      machine->array_cpu[i]->cores[j]->threads = malloc(numThreads * sizeof(struct my_thread*));
 
       for (k = 0; k < numThreads; k++)
       {
-        machine.array_cpu[i]->cores[j]->threads[k] = malloc(sizeof(struct my_thread));
-        machine.array_cpu[i]->cores[j]->threads[k]->core_id = j;
-        machine.array_cpu[i]->cores[j]->threads[k]->cpu_id = i;
-        machine.array_cpu[i]->cores[j]->threads[k]->thread_id = global_process_id;
+        machine->array_cpu[i]->cores[j]->threads[k] = malloc(sizeof(struct my_thread));
+        machine->array_cpu[i]->cores[j]->threads[k]->core_id = j;
+        machine->array_cpu[i]->cores[j]->threads[k]->cpu_id = i;
+        machine->array_cpu[i]->cores[j]->threads[k]->thread_id = global_process_id;
         global_process_id++;
       }
     }

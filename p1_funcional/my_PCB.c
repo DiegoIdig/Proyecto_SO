@@ -1,5 +1,7 @@
 #include "my_PCB.h"
 
+int pid = 0;
+
 struct my_PCB create_my_PCB()
 {
   //TO-DO
@@ -9,16 +11,17 @@ struct my_PCB create_my_PCB()
   struct my_PCB pcb;
   
   pcb.lifetime = rand();
-  pthread_t pid;
   pcb.pid = pid;
+  pid++;
+  pcb.quantum = rand() % 10; //por ejemplo, entre 1 y 10
   pcb.executedCycles = 0;
 
-  printf("PCB generated.\n---Quantum: %i \t pid: %li lifetime: %i\n", pcb.quantum, pcb.pid, pcb.lifetime);
+  printf("PCB generated.\n---Quantum: %i \t pid: %i lifetime: %i\n", pcb.quantum, pcb.pid, pcb.lifetime);
 
   return pcb;
 }
 
 void print_my_PCB(struct my_PCB* pcb)
 {
-  printf("----------PCB----------\nid=%lli, quantum=%i, executedCycles=%d, lifetime=%d\n", pcb->pid, pcb->quantum, pcb->executedCycles, pcb->lifetime);
+  printf("----------PCB----------\nid=%i, quantum=%i, executedCycles=%d, lifetime=%d\n", pcb->pid, pcb->quantum, pcb->executedCycles, pcb->lifetime);
 }

@@ -52,7 +52,7 @@ struct timer_params
 
 
 /*********************** FUNCIONES DECLARADAS ***********************/
-struct my_machine create_my_machine(int numCPU, int numCores, int numThreads);
+struct my_machine* create_my_machine(int numCPU, int numCores, int numThreads);
 void* my_clock(void *arg);
 void* my_timer(void *arg);
 

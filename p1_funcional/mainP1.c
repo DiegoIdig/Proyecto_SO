@@ -6,7 +6,7 @@
 #include "my_processGenerator.h"
 
 //Variables globales
-struct my_processQueue *global_queues; //tantas colas como procesadores
+struct my_processQueue **global_queues; //tantas colas como procesadores
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
   //otra opcion es tomar valores por entrada estandar
 
   printf("-----INICIALIZANDO MAQUINA-----\n");
-  struct my_machine machine = create_my_machine(numCPU, numCoresPerCPU, numThreadPerCore);
+  struct my_machine* machine = create_my_machine(numCPU, numCoresPerCPU, numThreadPerCore);
 
   int totalTimers = 2;
   int maxPermitedProcess = 3;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
   static struct clock_params cp;
   cp.totalTimers = totalTimers;
-  cp.machine = &machine;
+  cp.machine = machine;
   
   static struct timer_params tpScheduler;
   tpScheduler.frequency = schedulerFreq;

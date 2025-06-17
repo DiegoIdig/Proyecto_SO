@@ -6,6 +6,6 @@
 #include "my_processQueue.h"
 
 /*********************** FUNCIONES DECLARADAS ***********************/
-void my_scheduler(struct my_processQueue *pQueue);
+void my_scheduler();
 
 #endif
